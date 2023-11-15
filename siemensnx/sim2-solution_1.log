@@ -1,0 +1,108 @@
+NX Nastran V12.0 (Intel64 Family 6 Model 58 Stepping 9 Windows 8.1  ) Control File:
+-------------------------------------------------------------------
+Nastran BUFFSIZE=32769 $(c:/program files/siemens/nx 12.0/nxnastran/conf/nast12.rcf[1])
+Nastran BUFFPOOL=20.0X $(c:/program files/siemens/nx 12.0/nxnastran/conf/nast12.rcf[4])
+Nastran DIAGA=128 DIAGB=0 $(c:/program files/siemens/nx 12.0/nxnastran/conf/nast12.rcf[8])
+Nastran SYSTEM(442)=2 $(command line[5])
+Nastran REAL=520224768 $(Memory limit for MPI and other specialized modules)
+JID='C:\Users\Pedro Ramalho\Desktop\SOFCOM_G10\sim2-solution_1.dat'
+OUT='./sim2-solution_1'
+MEM=234808320
+MACH='Intel64 Family 6 Model 58 Stepping 9'
+OPER='Windows 8.1'
+OSV=' '
+MODEL='Intel(R) Core(TM) i5-3337U CPU @ 1.80GHz (ASUS_Pedro)'
+CONFIG=8666
+NPROC=4
+symbol=DELDIR='c:/program files/siemens/nx 12.0/nxnastran/nxn12/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/siemens/nx 12.0/nxnastran/nxn12/nast/demo' $(program default)
+symbol=SSSALTERDIR='c:/program files/siemens/nx 12.0/nxnastran/nxn12/nast/misc/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/siemens/nx 12.0/nxnastran/nxn12/nast/tpl' $(program default)
+SDIR='c:/users/pedror~1/appdata/local/temp/sim2-solution_1.T7580_59'
+DBS='c:/users/pedror~1/appdata/local/temp/sim2-solution_1.T7580_59'
+SCR=yes
+SMEM=20.0X
+NEWDEL='c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/SSS'
+DEL='NXNDEF'
+AUTH='25000@ls.dem.tecnico.ulisboa.pt'
+AUTHQUE=0
+MSGCAT='c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/analysis.msg'
+MSGDEST='f06'
+PROG=bundle
+NEWS='c:/program files/siemens/nx 12.0/nxnastran/nxn12/nast/news.txt'
+UMATLIB='libnxumat.dll'
+-------------------------------------------------------------------
+NXN_ISHELLPATH=C:\Program Files\Siemens\NX 12.0\nxnastran\bin
+NXN_JIDPATH=
+PATH=c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl;c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/sysnoise;c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/sml;c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/impi/bin;c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/monitor;C:\Program Files\Siemens\NX 12.0\nxbin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\MATLAB\R2015a\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common
+Command Line: sim2-solution_1.dat prog=bundle old=no scratch=yes sys442=2
+Current Dir: C:\Users\Pedro Ramalho\Desktop\SOFCOM_G10
+Executable:  c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/analysis.exe
+NXN_MSG:     stderr
+FPE:         no
+-------------------------------------------------------------------
+Current resource limits:
+ Physical memory:                     3981 MB
+ Physical memory available:           1638 MB
+ Paging file size:                    8077 MB
+ Paging file size available:          4878 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134217707 MB
+-------------------------------------------------------------------
+System configuration:
+ Hostname:         ASUS_Pedro
+ Architecture:     em64tnt
+ Platform:         Intel64 Family 6 Model 58 Stepping 9 Windows 8.1  
+ Model:            Intel(R) Core(TM) i5-3337U CPU @ 1.80GHz
+ Clock freq.:      1796 MHz
+ Number of CPUs:   4
+ Executable:       standard
+ Raw model ID:     8666
+ Config number:    8666
+ Physical memory:  3981 MB
+ Virtual memory:   8077 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/siemens/nx 12.0/nxnastran/nxn12/em64tntl/edsrmtcmd.exe" (Windows, UNIX)
+-------------------------------------------------------------------
+NX Nastran started  Thu May 17 18:37:02 HdVdG 2018
+ 18:37:03  Beginning Analysis
+
+ 18:37:03  NX NASTRAN Authorization Information - System Attributes
+ 18:37:03  --------------------------------------------------------
+ 18:37:03  Model: Intel(R) Core(TM) i5-3337U CPU @
+ 18:37:03  Machine: Intel64 Family 6 Model 58 Steppi
+ 18:37:03  OS: Windows 8.1
+ 18:37:03  Version:
+ 18:37:03  License File(s): 25000@ls.dem.tecnico.ulisboa.pt
+
+
+ 18:37:07  NX NASTRAN Licensing Information
+ 18:37:07  -------------------------------
+ 18:37:07  Sold To ID:            1465437 - Instituto Superior Te
+ 18:37:07  Webkey Access Code:    LJATTYOB2K
+ 18:37:07  License File Issuer:   SIEMENS
+
+
+ 18:37:07  NX NASTRAN Authorization Information - Checkout Successful
+ 18:37:07  ----------------------------------------------------------
+ 18:37:07  License for module NX Nastran Basic - NX Desktop (Bundle)  checked out successfully
+
+Loading Shared Library C:\Program Files\Siemens\NX 12.0\nxcae_extras\tmg\exe\mayamoncomm.dll
+Starting viewer with UGII_MONITOR_DIR set to 'C:\Program Files\Siemens\NX 12.0\nxcae_extras\tmg\exe'
+Starting monitor viewer at C:\Program Files\Siemens\NX 12.0\nxcae_extras\tmg\exe/xcsmon_viewer.exe
+ 18:37:14  Analysis started.
+ 18:37:14  Geometry access/verification to CAD part initiated (if needed).
+ 18:37:14  Geometry access/verification to CAD part successfully completed (if needed).
+ 18:37:15  Finite element model generation started.
+ 18:37:16  Finite element model generated 234 degrees of freedom.
+ 18:37:16  Finite element model generation successfully completed.
+ 18:37:16  Application of Loads and Boundary Conditions to the finite element model started.
+ 18:37:16  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 18:37:21  NSEXIT: EXIT(0)
+ 18:37:21  Analysis complete  0
+Real:       19.574 seconds ( 0:00:19.574)
+User:        3.765 seconds ( 0:00:03.765)
+Sys:         0.500 seconds ( 0:00:00.500)
+NX Nastran finished Thu May 17 18:37:22 HdVdG 2018

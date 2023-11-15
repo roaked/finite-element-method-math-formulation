@@ -1,0 +1,65 @@
+
+*** 18:43:33 *** 
+Starting Nastran Exporter
+
+*** 18:43:33 *** 
+Writing file C:\Users\Pedro Ramalho\Desktop\SOFCOM_G10\sim4-solution_1.dat
+
+*** 18:43:33 *** 
+Writing NX NASTRAN 12.0 compatible deck
+
+*** 18:43:33 *** 
+Writing Nastran System section
+
+*** 18:43:33 *** 
+Writing File Management section
+
+*** 18:43:33 *** 
+Writing Executive Control section
+
+*** 18:43:33 *** 
+Writing Case Control section
+
+*** 18:43:33 *** 
+Writing Bulk Data section
+
+*** 18:43:33 *** 
+Writing Nodes
+
+*** 18:43:33 *** 
+Writing Elements
+
+*** 18:43:33 *** 
+Writing Physical Properties
+
+*** 18:43:33 *** 
+Writing Materials
+
+*** 18:43:33 *** 
+Writing Degree-of-Freedom Sets
+
+*** 18:43:33 *** 
+Writing Loads and Constraints
+
+*** 18:43:33 *** 
+Writing Coordinate Systems
+
+*** 18:43:33 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CQUAD4   | 1632     |
+| GRID     | 1765     |
+| MAT4     | 1        |
+| NLPARM   | 1        |
+| PARAM    | 5        |
+| PSHELL   | 1        |
+| QVOL     | 1        |
+| SPC      | 264      |
++----------+----------+
+
+*** 18:43:33 *** 
+Nastran Deck Successfully Written
+

@@ -1,0 +1,65 @@
+
+*** 01:09:11 *** 
+Starting Nastran Exporter
+
+*** 01:09:11 *** 
+Writing file C:\Users\Pedro Ramalho\Desktop\NX\sim1-torsion.dat
+
+*** 01:09:11 *** 
+Writing NX NASTRAN 12.0 compatible deck
+
+*** 01:09:11 *** 
+Writing Nastran System section
+
+*** 01:09:11 *** 
+Writing File Management section
+
+*** 01:09:11 *** 
+Writing Executive Control section
+
+*** 01:09:11 *** 
+Writing Case Control section
+
+*** 01:09:11 *** 
+Writing Bulk Data section
+
+*** 01:09:12 *** 
+Writing Nodes
+
+*** 01:09:12 *** 
+Writing Elements
+
+*** 01:09:12 *** 
+Writing Physical Properties
+
+*** 01:09:12 *** 
+Writing Materials
+
+*** 01:09:12 *** 
+Writing Degree-of-Freedom Sets
+
+*** 01:09:12 *** 
+Writing Loads and Constraints
+
+*** 01:09:12 *** 
+Writing Coordinate Systems
+
+*** 01:09:12 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CQUAD4   | 67       |
+| GRID     | 96       |
+| MAT4     | 1        |
+| NLPARM   | 1        |
+| PARAM    | 5        |
+| PSHELL   | 1        |
+| QVOL     | 1        |
+| SPC      | 56       |
++----------+----------+
+
+*** 01:09:12 *** 
+Nastran Deck Successfully Written
+
