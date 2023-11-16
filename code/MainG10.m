@@ -1,83 +1,75 @@
-%Projeto Mecânica Computacional 2017/18
-%Torção de barras prismáticas
-%Grupo 10
-%Aluno Nº80998  Nome: Pedro Miguel Menezes Ramalho
-%Aluno Nº83403  Nome: João Domingues Alves Cantante Pires
-%Aluno Nº85183  Nome: Ricardo Miguel Diogo de Oliveira Chin
-
-
+%Ricardo Chin
 clc
 
-
-fprintf('\nMecânica Computacional 2017/18\n');
-fprintf('Este programa resolve problemas de torção de barras prismáticas.\n');
-nome = input('Introduza o nome do ficheiro de dados ("nome.txt"): \n','s');
+fprintf('\nFormulating a Finite Element Analysis Model\n');
+fprintf('This program solves torsion problems of prismatic bars.\n');
+nome = input('Enter the data file name ("nome.txt"): \n','s');
 
 
 [n_nos,matriz_dos_nos,n_elementos,matriz_de_incidencias,n_propriedades,...
     propriedades,n_carregamentos,carregamentos,n_cfront,cfronteira,n_pontual,pontual,...
     n_fluxofront,fluxofront,n_convec,convec,a,b,nome,matriz_aux] = LeDados(nome);
-%chama a função LeDados
+%chama a funcaoo LeDados
 
 
 warning=0;
 
 if n_pontual ~= 0 %caso existam cargas pontuais
-        fprintf('\nAtenção! O ficheiro de dados contém fontes/cargas pontuais impostas!\n');
+        fprintf('\nAtencao! O ficheiro de dados contem fontes/cargas pontuais impostas!\n');
         warning = 1;
 end
 if n_fluxofront ~= 0  %caso exista fluxo na fronteira 
-        fprintf('\nAtenção! O ficheiro de dados contém fluxo imposto na fronteira!\n');
+        fprintf('\nAtencao! O ficheiro de dados contem fluxo imposto na fronteira!\n');
         warning = 1;
 end
-if n_convec ~=0 %caso exista convecção natural imposta
-        fprintf('\nAtenção! O ficheiro de dados contém convecção natural imposta!\n');
+if n_convec ~=0 %caso exista conveccao natural imposta
+        fprintf('\nAtencao! O ficheiro de dados contem conveccao natural imposta!\n');
         warning = 1;
 end
 if warning == 1
-        fprintf('Existem condições de fronteira inválidas para o problema da torção!\n');
-        fprintf('Condições de fronteira inválidas serão ignoradas pelo programa.\n');
+        fprintf('Existem condicoes de fronteira invalidas para o problema da torcao!\n');
+        fprintf('Condicoes de fronteira invalidas serao ignoradas pelo programa.\n');
         fprintf('Sugere-se terminar o programa e alterar os valores.\n');
 end
 
-for i = 1:n_carregamentos %percorre até ao nº de carregamentos
+for i = 1:n_carregamentos %percorre ate ao numero de carregamentos
     if carregamentos(i,2) ~=  2 %caso carregamento diferente de 2
-        fprintf('\nAtenção! Os carregamentos distribuídos não são adequados para o problema de torção!\n');
+        fprintf('\nAtencao! Os carregamentos distribuidos nao sao adequados para o problema de torcao!\n');
         fprintf('Sugere-se terminar o programa e alterar os valores das cargas para 2.\n');
     end    
 end
-for i = 1:n_cfront %percorre até ao nº nós com condiçao fronteira
-    if cfronteira(i,2) ~=  0 %caso condiçao de fronteira diferente de 0
-        fprintf('\nAtenção! As condições de fronteira são inválidas para o problema da torção!\n');
-        fprintf('Os psis impostos na fronteira têm de ser iguais a zero.\n')
+for i = 1:n_cfront %percorre atï¿½ ao nï¿½ nï¿½s com condiï¿½ao fronteira
+    if cfronteira(i,2) ~=  0 %caso condiï¿½ao de fronteira diferente de 0
+        fprintf('\nAtenï¿½ï¿½o! As condiï¿½ï¿½es de fronteira sï¿½o invï¿½lidas para o problema da torï¿½ï¿½o!\n');
+        fprintf('Os psis impostos na fronteira tï¿½m de ser iguais a zero.\n')
         fprintf('Sugere-se terminar o programa e alterar os valores.\n');
     end    
 end
-if propriedades(1,2) ~= 1 %caso propriedade k não for 1
-    fprintf('\nAtenção! A propriedade do material não é adequada para o problema de torção!\n');
+if propriedades(1,2) ~= 1 %caso propriedade k nï¿½o for 1
+    fprintf('\nAtenï¿½ï¿½o! A propriedade do material nï¿½o ï¿½ adequada para o problema de torï¿½ï¿½o!\n');
     fprintf('Sugere-se terminar o programa e alterar os valor da propriedade para 1.\n');
 end
-if n_carregamentos ~= n_elementos %caso o nº de carregamentos não igualar o nº elementos
-    fprintf('\nAtenção! Existem elementos sem carregamentos distribuídos aplicados!\n');
+if n_carregamentos ~= n_elementos %caso o nï¿½ de carregamentos nï¿½o igualar o nï¿½ elementos
+    fprintf('\nAtenï¿½ï¿½o! Existem elementos sem carregamentos distribuï¿½dos aplicados!\n');
     fprintf('Sugere-se terminar o programa e alterar o ficheiro de dados.\n');
 end
 
 grafico_da_malha(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
-%plot da malha com nº nós e nº elementos
+%plot da malha com nï¿½ nï¿½s e nï¿½ elementos
 hold on
 
 selec = 0;
 resolvido = 0;
 
-while(selec==0) %espera que o utilizador introduza uma opção
-    fprintf('\nEscolher uma opção, começando pelo tipo de integração:\n');
-    fprintf('1: Integração analítica\n');
-    fprintf('2: Integração numérica de Gauss 2x2\n');
-    fprintf('3: Integração reduzida de Gauss 2x1\n');
-    fprintf('4: Integração reduzida de Gauss 1x2\n');
-    fprintf('5: Integração reduzida de Gauss 1x1\n');
-    fprintf('6: Obter gráficos solução Prandtl, tensões de corte e isolinhas de tensão\n');
-    fprintf('7: Obter gráfico da malha novamente\n');
+while(selec==0) %espera que o utilizador introduza uma opï¿½ï¿½o
+    fprintf('\nEscolher uma opï¿½ï¿½o, comeï¿½ando pelo tipo de integraï¿½ï¿½o:\n');
+    fprintf('1: Integraï¿½ï¿½o analï¿½tica\n');
+    fprintf('2: Integraï¿½ï¿½o numï¿½rica de Gauss 2x2\n');
+    fprintf('3: Integraï¿½ï¿½o reduzida de Gauss 2x1\n');
+    fprintf('4: Integraï¿½ï¿½o reduzida de Gauss 1x2\n');
+    fprintf('5: Integraï¿½ï¿½o reduzida de Gauss 1x1\n');
+    fprintf('6: Obter grï¿½ficos soluï¿½ï¿½o Prandtl, tensï¿½es de corte e isolinhas de tensï¿½o\n');
+    fprintf('7: Obter grï¿½fico da malha novamente\n');
     fprintf('0: Sair do programa\n');
     opcao = input('');
     valido=0;  
@@ -87,10 +79,10 @@ while(selec==0) %espera que o utilizador introduza uma opção
             valido=1;
     end
     if(valido==0)
-        fprintf('\nErro! Escolha inválida!\n');
+        fprintf('\nErro! Escolha invï¿½lida!\n');
     end
 
-switch(opcao) %opçoes de integraçao para escolha do utilizador
+switch(opcao) %opï¿½oes de integraï¿½ao para escolha do utilizador
     case{1,2,3,4,5}
         if opcao==1
            [K] = KAnalitico(matriz_de_incidencias,n_nos,a,b,propriedades);          
@@ -108,12 +100,12 @@ switch(opcao) %opçoes de integraçao para escolha do utilizador
         [centro_max,centro_min,tensao_max,tensao_min,tensaoxy,tensaoxz,tensaoyz] = Tensoes(n_elementos, matriz_dos_nos, matriz_de_incidencias,a,b,J,solucao_nodal);
         
         resolvido = 1;
-        fprintf('\nIntegração concluída. Escolha a próxima opção:\n');
+        fprintf('\nIntegraï¿½ï¿½o concluï¿½da. Escolha a prï¿½xima opï¿½ï¿½o:\n');
         
-    case{6} %apresenta os gráficos após escolhido o tipo de integração
+    case{6} %apresenta os grï¿½ficos apï¿½s escolhido o tipo de integraï¿½ï¿½o
         if resolvido==0
-            fprintf('\nErro! Ainda não foi executado qualquer tipo de integração!\n');
-            fprintf('Escolha um tipo de integração (1,2,3,4 ou 5) primeiro.\n');
+            fprintf('\nErro! Ainda nï¿½o foi executado qualquer tipo de integraï¿½ï¿½o!\n');
+            fprintf('Escolha um tipo de integraï¿½ï¿½o (1,2,3,4 ou 5) primeiro.\n');
         else
            
             grafico_de_prandtl(solucao_nodal,n_nos,matriz_dos_nos,tipoint)
@@ -125,17 +117,17 @@ switch(opcao) %opçoes de integraçao para escolha do utilizador
             grafico_isolinhas(n_elementos,matriz_dos_nos,centroX,centroY,tensaoxy,n_nos,tipoint)
             hold on
             
-            fprintf('\nGráficos obtidos. Escolha a próxima opção:\n');    
+            fprintf('\nGrï¿½ficos obtidos. Escolha a prï¿½xima opï¿½ï¿½o:\n');    
         end
         
-    case{7} %volta a apresentar o gráfico da malha caso o utilizador queira
+    case{7} %volta a apresentar o grï¿½fico da malha caso o utilizador queira
         figure
         grafico_da_malha(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
         hold on
         
-        fprintf('\nGráfico obtido. Escolha a próxima opção:\n');
+        fprintf('\nGrï¿½fico obtido. Escolha a prï¿½xima opï¿½ï¿½o:\n');
         
-    case{0} %opçao para terminar o programa
+    case{0} %opï¿½ao para terminar o programa
         selec=1;
         fprintf('\n\nPrograma terminado.\n');          
 end
