@@ -1,4 +1,10 @@
+%
+%
 %Ricardo Chin
+%
+%
+%
+
 clc
 
 fprintf('\nFormulating a Finite Element Analysis Model\n');
@@ -12,32 +18,33 @@ nome = input('Enter the data file name ("nome.txt"): \n','s');
 %chama a funcaoo LeDados
 
 
-warning=0;
+aviso = 0;
 
-if n_pontual ~= 0 %caso existam cargas pontuais
-        fprintf('\nAtencao! O ficheiro de dados contem fontes/cargas pontuais impostas!\n');
-        warning = 1;
+if n_pontual ~= 0 % if there are point loads
+    fprintf('\nWarning! The data file contains imposed point sources/loads!\n');
+    aviso = 1;
 end
-if n_fluxofront ~= 0  %caso exista fluxo na fronteira 
-        fprintf('\nAtencao! O ficheiro de dados contem fluxo imposto na fronteira!\n');
-        warning = 1;
+if n_fluxofront ~= 0 % if there is flux at the boundary
+    fprintf('\nWarning! The data file contains imposed flux at the boundary!\n');
+    aviso = 1;
 end
-if n_convec ~=0 %caso exista conveccao natural imposta
-        fprintf('\nAtencao! O ficheiro de dados contem conveccao natural imposta!\n');
-        warning = 1;
+if n_convec ~= 0 % if there is imposed natural convection
+    fprintf('\nWarning! The data file contains imposed natural convection!\n');
+    aviso = 1;
 end
-if warning == 1
-        fprintf('Existem condicoes de fronteira invalidas para o problema da torcao!\n');
-        fprintf('Condicoes de fronteira invalidas serao ignoradas pelo programa.\n');
-        fprintf('Sugere-se terminar o programa e alterar os valores.\n');
+if aviso == 1
+    fprintf('There are invalid boundary conditions for the torsion problem!\n');
+    fprintf('Invalid boundary conditions will be ignored by the program.\n');
+    fprintf('It is suggested to terminate the program and change the values.\n');
 end
 
-for i = 1:n_carregamentos %percorre ate ao numero de carregamentos
-    if carregamentos(i,2) ~=  2 %caso carregamento diferente de 2
-        fprintf('\nAtencao! Os carregamentos distribuidos nao sao adequados para o problema de torcao!\n');
-        fprintf('Sugere-se terminar o programa e alterar os valores das cargas para 2.\n');
+for i = 1:n_carregamentos %% loops up to the number of loads
+    if carregamentos(i,2) ~=  2 % if load is different from 2
+        fprintf('\nWarning! Distributed loads are not suitable for the torsion problem!\n');
+        fprintf('It is suggested to terminate the program and change the load values to 2.\n');
     end    
 end
+
 for i = 1:n_cfront %percorre at� ao n� n�s com condi�ao fronteira
     if cfronteira(i,2) ~=  0 %caso condi�ao de fronteira diferente de 0
         fprintf('\nAten��o! As condi��es de fronteira s�o inv�lidas para o problema da tor��o!\n');
