@@ -45,51 +45,54 @@ for i = 1:n_carregamentos %% loops up to the number of loads
     end    
 end
 
-for i = 1:n_cfront %percorre at� ao n� n�s com condi�ao fronteira
-    if cfronteira(i,2) ~=  0 %caso condi�ao de fronteira diferente de 0
-        fprintf('\nAten��o! As condi��es de fronteira s�o inv�lidas para o problema da tor��o!\n');
-        fprintf('Os psis impostos na fronteira t�m de ser iguais a zero.\n')
-        fprintf('Sugere-se terminar o programa e alterar os valores.\n');
+for i = 1:n_cfront % loops up to the number of nodes with boundary condition
+    if cfronteira(i,2) ~=  0 % if boundary condition is different from 0
+        fprintf('\nWarning! The boundary conditions are invalid for the torsion problem!\n');
+        fprintf('The imposed psis at the boundary must be equal to zero.\n')
+        fprintf('It is suggested to terminate the program and change the values.\n');
     end    
 end
-if propriedades(1,2) ~= 1 %caso propriedade k n�o for 1
-    fprintf('\nAten��o! A propriedade do material n�o � adequada para o problema de tor��o!\n');
-    fprintf('Sugere-se terminar o programa e alterar os valor da propriedade para 1.\n');
+
+if propriedades(1,2) ~= 1 % if property k is not 1
+    fprintf('\nWarning! The material property is not suitable for the torsion problem!\n');
+    fprintf('It is suggested to terminate the program and change the property value to 1.\n');
 end
-if n_carregamentos ~= n_elementos %caso o n� de carregamentos n�o igualar o n� elementos
-    fprintf('\nAten��o! Existem elementos sem carregamentos distribu�dos aplicados!\n');
-    fprintf('Sugere-se terminar o programa e alterar o ficheiro de dados.\n');
+
+if n_carregamentos ~= n_elementos % if the number of loads does not equal the number of elements
+    fprintf('\nWarning! There are elements without applied distributed loads!\n');
+    fprintf('It is suggested to terminate the program and modify the data file.\n');
 end
 
 grafico_da_malha(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
-%plot da malha com n� n�s e n� elementos
+%plots of mesh with nodes and elements
 hold on
 
 selec = 0;
 resolvido = 0;
 
-while(selec==0) %espera que o utilizador introduza uma op��o
-    fprintf('\nEscolher uma op��o, come�ando pelo tipo de integra��o:\n');
-    fprintf('1: Integra��o anal�tica\n');
-    fprintf('2: Integra��o num�rica de Gauss 2x2\n');
-    fprintf('3: Integra��o reduzida de Gauss 2x1\n');
-    fprintf('4: Integra��o reduzida de Gauss 1x2\n');
-    fprintf('5: Integra��o reduzida de Gauss 1x1\n');
-    fprintf('6: Obter gr�ficos solu��o Prandtl, tens�es de corte e isolinhas de tens�o\n');
-    fprintf('7: Obter gr�fico da malha novamente\n');
-    fprintf('0: Sair do programa\n');
+while (selec == 0)
+    % Waiting.....
+    fprintf('\nChoose an option, starting with the type of integration:\n');
+    fprintf('1: Analytical Integration\n');
+    fprintf('2: Numerical Integration - Gauss 2x2\n');
+    fprintf('3: Reduced Integration - Gauss 2x1\n');
+    fprintf('4: Reduced Integration - Gauss 1x2\n');
+    fprintf('5: Reduced Integration - Gauss 1x1\n');
+    fprintf('6: Obtain Prandtl solution, shear stresses, and stress contour plots\n');
+    fprintf('7: Replot the mesh\n');
+    fprintf('0: Exit the program\n');
     opcao = input('');
-    valido=0;  
+    valido = 0;
    
     switch(opcao)
         case{0,1,2,3,4,5,6,7}
             valido=1;
     end
     if(valido==0)
-        fprintf('\nErro! Escolha inv�lida!\n');
+        fprintf('\nERROR! Invalid option!\n');
     end
 
-switch(opcao) %op�oes de integra�ao para escolha do utilizador
+switch(opcao) %Interface integration options
     case{1,2,3,4,5}
         if opcao==1
            [K] = KAnalitico(matriz_de_incidencias,n_nos,a,b,propriedades);          
@@ -107,12 +110,12 @@ switch(opcao) %op�oes de integra�ao para escolha do utilizador
         [centro_max,centro_min,tensao_max,tensao_min,tensaoxy,tensaoxz,tensaoyz] = Tensoes(n_elementos, matriz_dos_nos, matriz_de_incidencias,a,b,J,solucao_nodal);
         
         resolvido = 1;
-        fprintf('\nIntegra��o conclu�da. Escolha a pr�xima op��o:\n');
+        fprintf('\nIntegration completed. Choose the next option:\n');
         
-    case{6} %apresenta os gr�ficos ap�s escolhido o tipo de integra��o
+    case{6} % Displays plots after integration type is chosen
         if resolvido==0
-            fprintf('\nErro! Ainda n�o foi executado qualquer tipo de integra��o!\n');
-            fprintf('Escolha um tipo de integra��o (1,2,3,4 ou 5) primeiro.\n');
+            fprintf('\nError! No integration has been performed yet!\n');
+            fprintf('Choose an integration type (1, 2, 3, 4, or 5) first.\n');
         else
            
             grafico_de_prandtl(solucao_nodal,n_nos,matriz_dos_nos,tipoint)
@@ -124,19 +127,19 @@ switch(opcao) %op�oes de integra�ao para escolha do utilizador
             grafico_isolinhas(n_elementos,matriz_dos_nos,centroX,centroY,tensaoxy,n_nos,tipoint)
             hold on
             
-            fprintf('\nGr�ficos obtidos. Escolha a pr�xima op��o:\n');    
+            fprintf('\nPlots obtained. Choose the next option:\n');    
         end
         
-    case{7} %volta a apresentar o gr�fico da malha caso o utilizador queira
+    case{7} % Displays the mesh plot if the user wants
         figure
         grafico_da_malha(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
         hold on
         
-        fprintf('\nGr�fico obtido. Escolha a pr�xima op��o:\n');
+        fprintf('\nMesh plot obtained. Choose the next option:\n');
         
-    case{0} %op�ao para terminar o programa
+    case{0} % Option to terminate the program
         selec=1;
-        fprintf('\n\nPrograma terminado.\n');          
+        fprintf('\n\nProgram terminated.\n');             
 end
 
 
