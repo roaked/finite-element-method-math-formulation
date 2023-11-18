@@ -1,4 +1,4 @@
-function grafico_de_prandtl(solucao_nodal,n_nos,matriz_dos_nos,tipoint)
+function graph_Prandtl(solucao_nodal,n_nos,matriz_dos_nos,tipoint)
 % Function to represent the Prandtl function value
 
 X = unique(matriz_dos_nos(:,2));          % Registers the unique x-coordinate values of each node

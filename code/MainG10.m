@@ -63,7 +63,7 @@ if n_carregamentos ~= n_elementos % if the number of loads does not equal the nu
     fprintf('It is suggested to terminate the program and modify the data file.\n');
 end
 
-grafico_da_malha(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
+mesh_display(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
 %plots of mesh with nodes and elements
 hold on
 
@@ -132,7 +132,7 @@ switch(opcao) %Interface integration options
         
     case{7} % Displays the mesh plot if the user wants
         figure
-        grafico_da_malha(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
+        mesh_display(n_nos,n_elementos,matriz_dos_nos,matriz_de_incidencias,a,b)
         hold on
         
         fprintf('\nMesh plot obtained. Choose the next option:\n');
