@@ -101,7 +101,7 @@ switch(opcao) %Interface integration options
         end
         tipoint = opcao;
         
-        [F] = Forcas(matriz_de_incidencias,n_nos,a,b,carregamentos );
+        [F] = Loads(matriz_de_incidencias,n_nos,a,b,carregamentos );
         
         [solucao_nodal] = Solver(K,F,cfronteira,n_nos);
         
