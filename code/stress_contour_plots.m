@@ -1,4 +1,4 @@
-function stress_contour_plos(n_elementos,matriz_dos_nos,centroX,centroY,tensaoxy,n_nos,tipoint)
+function stress_contour_plots(n_elementos,matriz_dos_nos,centroX,centroY,tensaoxy,n_nos,tipoint)
 % This function generates graphical representations of various contour lines
 
 X = unique(centroX);  % Registers unique values of the x-coordinate for each element center
