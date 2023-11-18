@@ -107,7 +107,7 @@ switch(opcao) %Interface integration options
         
         [Je, J] = rigidezJ (solucao_nodal,a,b,n_elementos,matriz_de_incidencias);
         
-        [centro_max,centro_min,tensao_max,tensao_min,tensaoxy,tensaoxz,tensaoyz] = Tensoes(n_elementos, matriz_dos_nos, matriz_de_incidencias,a,b,J,solucao_nodal);
+        [centro_max,centro_min,tensao_max,tensao_min,tensaoxy,tensaoxz,tensaoyz] = Stresses(n_elementos, matriz_dos_nos, matriz_de_incidencias,a,b,J,solucao_nodal);
         
         resolvido = 1;
         fprintf('\nIntegration completed. Choose the next option:\n');

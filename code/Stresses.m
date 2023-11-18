@@ -1,4 +1,4 @@
-function [centro_max,centro_min,tensao_max,tensao_min,tensaoxy,tensaoxz,tensaoyz] = Tensoes(n_elementos, matriz_dos_nos, matriz_de_incidencias,a,b,J,solucao_nodal)
+function [centro_max,centro_min,tensao_max,tensao_min,tensaoxy,tensaoxz,tensaoyz] = Stresses(n_elementos, matriz_dos_nos, matriz_de_incidencias,a,b,J,solucao_nodal)
 % Function to calculate shear stress intensities and locate maximum and minimum stresses
 
 
