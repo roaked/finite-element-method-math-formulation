@@ -118,7 +118,7 @@ switch(opcao) %Interface integration options
             fprintf('Choose an integration type (1, 2, 3, 4, or 5) first.\n');
         else
            
-            grafico_de_prandtl(solucao_nodal,n_nos,matriz_dos_nos,tipoint)
+            graph_Prandtl(solucao_nodal,n_nos,matriz_dos_nos,tipoint)
             hold on
                 
             [centroX, centroY] = graph_shear_stresses(a,b,matriz_de_incidencias,matriz_dos_nos,n_elementos,tensaoxz,tensaoyz,tipoint);
