@@ -105,7 +105,7 @@ switch(opcao) %Interface integration options
         
         [solucao_nodal] = Solver(K,F,cfronteira,n_nos);
         
-        [Je, J] = rigidezJ (solucao_nodal,a,b,n_elementos,matriz_de_incidencias);
+        [Je, J] = torsionconstantJ(solucao_nodal,a,b,n_elementos,matriz_de_incidencias);
         
         [centro_max,centro_min,tensao_max,tensao_min,tensaoxy,tensaoxz,tensaoyz] = Stresses(n_elementos, matriz_dos_nos, matriz_de_incidencias,a,b,J,solucao_nodal);
         
