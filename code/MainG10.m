@@ -121,10 +121,10 @@ switch(opcao) %Interface integration options
             grafico_de_prandtl(solucao_nodal,n_nos,matriz_dos_nos,tipoint)
             hold on
                 
-            [centroX, centroY] = grafico_tensao_c(a,b,matriz_de_incidencias,matriz_dos_nos,n_elementos,tensaoxz,tensaoyz,tipoint);
+            [centroX, centroY] = graph_shear_stresses(a,b,matriz_de_incidencias,matriz_dos_nos,n_elementos,tensaoxz,tensaoyz,tipoint);
             hold on
                 
-            grafico_isolinhas(n_elementos,matriz_dos_nos,centroX,centroY,tensaoxy,n_nos,tipoint)
+            stress_contour_plos(n_elementos,matriz_dos_nos,centroX,centroY,tensaoxy,n_nos,tipoint)
             hold on
             
             fprintf('\nPlots obtained. Choose the next option:\n');    
