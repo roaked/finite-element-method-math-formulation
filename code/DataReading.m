@@ -1,73 +1,75 @@
 function [n_nos,matriz_dos_nos,n_elementos,matriz_de_incidencias,n_propriedades,...
     propriedades,n_carregamentos,carregamentos,n_cfront,cfronteira,n_pontual,pontual,...
-    n_fluxofront,fluxofront,n_convec,convec,a,b,nome,matriz_aux] = LeDados(nome)
+    n_fluxofront,fluxofront,n_convec,convec,a,b,nome,matriz_aux] = DataReading(nome)
 
-%(dados,abertura)
-dados = fopen(nome,'r');
+% Reads data from a file and extracts structural parameters
 
-while dados==-1
-    fprintf('\nErro! Nome do ficheiro inválido!\n');
-    nome = input('Introduza um nome do ficheiro de dados válido ("nome.txt"):  \n', 's');
+dados = fopen(nome,'r'); % Open the file
+
+while dados == -1
+    fprintf('\nError! Invalid file name!\n');
+    nome = input('Enter a valid data file name ("name.txt"):  \n', 's');
     dados = fopen(nome);
 end
 
+% Extract number of nodes
 tline = fgetl(dados);
 tline = fgetl(dados);
-n_nos = fscanf (dados, '%f',(1));
+n_nos = fscanf(dados, '%f', 1);
 
-%Matriz dos nos
+% Extract node matrix
 tline = fgetl(dados);
-matriz_dos_nos = fscanf (dados,'%e', [3 inf]);
+matriz_dos_nos = fscanf(dados, '%e', [3 inf]);
 matriz_dos_nos = matriz_dos_nos';
 
-%Matriz de Incidencias
+% Extract Incidence Matrix
 tline = fgetl(dados);
-n_elementos = fscanf (dados, '%f', 1);
+n_elementos = fscanf(dados, '%f', 1);
 tline = fgetl(dados);
-matriz_aux = fscanf (dados,'%e', [7 inf]);
+matriz_aux = fscanf(dados, '%e', [7 inf]);
 matriz_aux = matriz_aux';
-matriz_de_incidencias = matriz_aux(:,4:7);
+matriz_de_incidencias = matriz_aux(:, 4:7);
 
-%Propriedades do material
+% Extract Material Properties
 tline = fgetl(dados);
 n_propriedades = fscanf (dados, '%f', 1);
 propriedades = fscanf (dados,'%e', [2 inf]);
 propriedades = propriedades';
 
-%Carregamentos Distribuidos
+% Extracting Distributed Loads
 tline = fgetl(dados);
 n_carregamentos = fscanf (dados, '%f', 1);
 carregamentos = fscanf (dados,'%e', [2 inf]);
 carregamentos = carregamentos';
 
-%Condição Fronteira Essencial
+% Extracting Boundary Conditions
 tline = fgetl(dados);
 n_cfront = fscanf (dados, '%f', 1);
 cfronteira = fscanf (dados,'%e', [2 inf]);
 cfronteira = cfronteira';
 
-%Carga Pontual
+% Extracting Ponctual Loads
 tline = fgetl(dados);
 n_pontual = fscanf (dados, '%f', 1);
 pontual = fscanf (dados,'%e', [3 inf]);
 pontual = pontual';
 
-%Tensão/Fluxo na fronteira
+% Extracting Flux and Stress at the Boundarys
 tline = fgetl(dados);
 n_fluxofront = fscanf (dados, '%f', 1);
 fluxofront = fscanf (dados,'%e', [5 inf]);
 fluxofront = fluxofront';
 
-%Conveccção Natural
+% Natural Convection
 tline = fgetl(dados);
 n_convec = fscanf (dados, '%f', 1);
 convec = fscanf (dados,'%e', [3 inf]);
 convec = convec';
 
 
-%tamanho dos elementos
-a = zeros(n_elementos,1);                %comprimento do elemento
-b = zeros(n_elementos,1);                %largura do elemento
+% Calculate Element Sizes
+a = zeros(n_elementos, 1); % Element length
+b = zeros(n_elementos, 1); % Element width
 for i = 1:n_elementos
     aux1 = matriz_de_incidencias(i,1);
     aux2 = matriz_de_incidencias(i,2);

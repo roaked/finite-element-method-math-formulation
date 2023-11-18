@@ -9,13 +9,13 @@ clc
 
 fprintf('\nFormulating a Finite Element Analysis Model\n');
 fprintf('This program solves torsion problems of prismatic bars.\n');
-nome = input('Enter the data file name ("nome.txt"): \n','s');
+nome = input('Enter the data file name ("name.txt"): \n','s');
 
 
 [n_nos,matriz_dos_nos,n_elementos,matriz_de_incidencias,n_propriedades,...
     propriedades,n_carregamentos,carregamentos,n_cfront,cfronteira,n_pontual,pontual,...
-    n_fluxofront,fluxofront,n_convec,convec,a,b,nome,matriz_aux] = LeDados(nome);
-%chama a funcaoo LeDados
+    n_fluxofront,fluxofront,n_convec,convec,a,b,nome,matriz_aux] = DataReading(nome);
+% Call function DataReading
 
 
 aviso = 0;
