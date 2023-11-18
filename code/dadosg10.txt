@@ -1,5 +1,5 @@
-Título: Torção de Barras Prismáticas
-Coordenadas dos nós
+Tï¿½tulo: Torï¿½ï¿½o de Barras Prismï¿½ticas
+Coordenadas dos nï¿½s
 96  
   1  0.e-3  0.e-3
   2  25.e-3  0.e-3
@@ -97,7 +97,7 @@ Coordenadas dos nós
  94  250.e-3  180.e-3
  95  270.e-3  180.e-3
  96  290.e-3  180.e-3 
-Matrix de incidências/conectividades
+Matrix de incidï¿½ncias/conectividades
 67  0
   1   1  4   1   2  16  15
   2   1  4   2   3  17  16
@@ -169,7 +169,7 @@ Matrix de incidências/conectividades
 Propriedades material
 1 
   1  1.e0  
-Fontes/carregamentos distribuídos
+Fontes/carregamentos distribuï¿½dos
 67
   1   2
   2   2
@@ -238,7 +238,7 @@ Fontes/carregamentos distribuídos
   65   2
   66   2
   67   2
-Condição fronteira essencial 
+Condiï¿½ï¿½o fronteira essencial 
 56 
   1  0.e0 
   2  0.e0  
@@ -300,5 +300,5 @@ Fontes/cargas pontuais impostas
 0
 Fluxo imposto na fronteira
 0
-CF convecção natural
+CF convecï¿½ï¿½o natural
 0
